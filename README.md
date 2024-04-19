@@ -43,6 +43,9 @@ httpfs -mount ~/demo ./examples/flask-basic/app.py
 ```
 
 ## Install
+
+Currently works on Linux and Mac (with [MacFUSE](https://osxfuse.github.io/)).
+
 ```
 go install github.com/progrium/httpfs
 ```
