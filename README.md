@@ -1,6 +1,6 @@
 # httpfs
 
-Create filesystems using your favorite HTTP framework.
+Create filesystems using any HTTP framework.
 
 
 ```
@@ -14,7 +14,7 @@ $ tree ~/demo
 2 directories, 3 files
 ```
 
-That file tree mounted at `~/demo` is powered by this Flask app:
+The file tree mounted at `~/demo` is powered by this Flask app:
 
 ```python
 import os, random
@@ -41,6 +41,8 @@ All it took was one command:
 ```
 httpfs -mount ~/demo ./examples/flask-basic/app.py
 ```
+
+Don't care for Flask? Use any web framework!
 
 ## Install
 
