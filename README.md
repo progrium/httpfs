@@ -49,7 +49,7 @@ Don't care for Flask? Use any web framework!
 Currently works on Linux and Mac (with [MacFUSE](https://osxfuse.github.io/)).
 
 ```
-go get github.com/progrium/httpfs
+go install github.com/progrium/httpfs@latest
 ```
 
 ## Build
