@@ -10,6 +10,10 @@ import (
 )
 
 func main() {
+	// this could be replaced by some middleware that reflects on routes,
+	// but you can't enumerate patterns with the built-in ServeMux. most
+	// other routers like github.com/gorilla/mux let you do this, but here
+	// is a manual example anyway.
 	http.Handle("/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Add("Content-Type", "application/vnd.httpfs.v1+json")
 		b, _ := json.Marshal(map[string]any{
