@@ -46,18 +46,26 @@ func main() {
 	if err := cmd.Start(); err != nil {
 		log.Fatal("unable to start subprocess: ", err)
 	}
-	<-time.After(1 * time.Second)
 
 	if mountpath != nil {
 		fs := &httpFS{
 			baseURL: fmt.Sprintf("http://localhost:%d", port),
 		}
+
+		// poll until server is up or 5 sec timeout
 		_, err := fs.Stat(".")
+		for err != nil {
+			if time.Since(startTime).Seconds() >= 5 {
+				break
+			}
+			<-time.After(500 * time.Millisecond)
+			_, err = fs.Stat(".")
+		}
 		if err != nil {
 			tryShutdown()
 			log.Fatal("unable to stat httpfs: ", err)
 		}
-		log.Println(*mountpath)
+
 		mount = &fuseMount{
 			fs:   fs,
 			path: *mountpath,
@@ -79,6 +87,8 @@ func main() {
 		for sig := range sigChan {
 			if sig == os.Interrupt {
 				tryUnmount()
+				tryShutdown()
+				return
 			}
 			if cmd.Process != nil {
 				cmd.Process.Signal(sig)
