@@ -1,6 +1,6 @@
 .PHONY: httpfs release
 
-VERSION=0.1dev
+VERSION=0.2dev
 
 httpfs:
 	go build -ldflags="-X 'main.Version=${VERSION}'" .
