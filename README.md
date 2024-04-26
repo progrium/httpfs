@@ -1,6 +1,6 @@
 # httpfs
 
-Create filesystems using any HTTP framework.
+Create virtual filesystems using any HTTP framework.
 
 
 ```
@@ -46,13 +46,20 @@ Don't care for Flask? Use any web framework!
 
 ## Install
 
-Currently works on Linux and Mac (with [MacFUSE](https://osxfuse.github.io/)).
+Currently works on Linux and Mac (with [MacFUSE](https://osxfuse.github.io/)). Download from [latest release](https://github.com/progrium/httpfs/releases/latest) or you can run this installer:
 
-```
-go install github.com/progrium/httpfs@latest
+```sh
+bash -c "$(curl -sSL https://raw.githubusercontent.com/progrium/httpfs/main/install.sh)"
 ```
 
-## Build
+Alternatively you can install using [Homebrew](https://brew.sh/):
+
+```sh
+brew tap progrium/homebrew-taps
+brew install httpfs
+```
+
+## Build an HTTP filesystem
 
 Check out the [examples directory](examples) or read the [PROTOCOL.md](PROTOCOL.md) to see how it works.
 

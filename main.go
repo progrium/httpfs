@@ -14,9 +14,12 @@ import (
 )
 
 var (
-	mountpath = flag.String("mount", "", "path to mount filesystem")
-	mount     Mounter
-	cmd       *exec.Cmd
+	Version string
+
+	showVersion = flag.Bool("v", false, "show version")
+	mountpath   = flag.String("mount", "", "path to mount filesystem")
+	mount       Mounter
+	cmd         *exec.Cmd
 )
 
 type Mounter interface {
@@ -27,6 +30,11 @@ type Mounter interface {
 
 func main() {
 	flag.Parse()
+	if *showVersion {
+		fmt.Println(Version)
+		return
+	}
+
 	if len(flag.Args()) < 1 || mountpath == nil {
 		println("Usage: httpfs -mount=MOUNTPATH EXEC-PATH [EXEC-ARGS...]")
 		os.Exit(1)
