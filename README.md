@@ -63,6 +63,10 @@ brew install httpfs
 
 Check out the [examples directory](examples) or read the [PROTOCOL.md](PROTOCOL.md) to see how it works.
 
+## Roadmap
+
+Full read-write and more coming soon. See our [roadmap](https://github.com/users/progrium/projects/2/views/1).
+
 ## License
 
 MIT
